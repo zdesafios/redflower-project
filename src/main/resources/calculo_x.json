@@ -1,0 +1,74 @@
+{
+	"name": "calculo x",
+	"pipeline": {
+		"type":"sync",
+		"data_json": [],
+		"steps":[
+			{
+				"math":{
+					"name":"names",
+					"operations": [
+						
+						{
+							"variable_assignment":{
+								"type":"global",
+								"name":"idade",
+								"source":"data_json",
+								"value":"$.person.idade"
+							}
+						},
+						{
+							"variable_assignment":{
+								"type":"global",
+								"name":"fator",
+								"source":"literal",
+								"value":"5"
+							}
+						},
+						{
+							"number_multiply":{
+								"right":{
+									"source":"global",
+									"value":"idade"
+								},
+								"left":{
+									"source":"global",
+									"value":"fator" 
+								},
+								"assignment":{
+									"type":"global",
+									"name":"fator_aposentadoria"
+								}
+								
+							}
+						},
+						
+						{
+							"number_multiply":{
+								"right":{
+									"source":"global",
+									"value":"fator_aposentadoria"
+								},
+								"left":{
+									"source":"literal",
+									"value":12 
+								},
+								"assignment":"mes_aposentadoria"
+							}
+						}	
+						
+					],
+					"flow_decicion":{
+						"for":"mes_aposentadoria",
+						"choose":[
+							{"case":"1", "next":"primeiro_mes_step"},
+							{"case":"2", "next":"segundo_mes_step"},
+							{"case":"3", "next":"terceiro_mes_step"},
+							{"case":"4", "next":"quarto_mes_step"}
+						]
+					}
+				}
+			}
+		]
+	}
+}
