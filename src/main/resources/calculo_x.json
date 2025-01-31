@@ -1,74 +1,112 @@
 {
-	"name": "calculo x",
+	"name": "calculox",
 	"pipeline": {
-		"type":"sync",
-		"data_json": [],
+		"type":"SYNC",
+		"data_json": {},
+		"entrypoint":{
+			"type":"http",
+			"path":"/project/calculox",
+			"method":"post"
+		},
 		"steps":[
 			{
-				"math":{
-					"name":"names",
-					"operations": [
+				"type":"MathStepSchema",
+				"name":"names",
+				"next":"decisao-x",
+				"operations": [
 						
-						{
-							"variable_assignment":{
-								"type":"global",
-								"name":"idade",
-								"source":"data_json",
-								"value":"$.person.idade"
-							}
-						},
-						{
-							"variable_assignment":{
-								"type":"global",
-								"name":"fator",
-								"source":"literal",
-								"value":"5"
-							}
-						},
-						{
-							"number_multiply":{
-								"right":{
-									"source":"global",
-									"value":"idade"
-								},
-								"left":{
-									"source":"global",
-									"value":"fator" 
-								},
-								"assignment":{
-									"type":"global",
-									"name":"fator_aposentadoria"
-								}
-								
-							}
-						},
+					{
+						"operation":"variable_assignment",
+						"final":true,
+						"scope":"GLOBAL",
+						"name":"idade",
+						"source_type":"var",
+						"source":"data_json",
+						"value":"$.person.idade"
+					},
+					
+					{
+						"operation":"variable_assignment",
+						"scope":"LOCAL",
+						"name":"fator",
+						"source_type":"literal",
+						"value":"5"
 						
-						{
-							"number_multiply":{
-								"right":{
-									"source":"global",
-									"value":"fator_aposentadoria"
-								},
-								"left":{
-									"source":"literal",
-									"value":12 
-								},
-								"assignment":"mes_aposentadoria"
-							}
-						}	
+					},
+					
+					{
+						"operation":"variable_assignment",
+						"scope":"LOCAL",
+						"name":"json-x",
+						"source_type":"http",
+						"source":"http://localhost:8595/json",
+						"value":"$.street[*].rua"
+					},
+					
+					{
+						"operation":"variable_assignment",
+						"scope":"LOCAL",
+						"name":"json-xpto",
+						"source_type":"var",
+						"source":"json-x",
+						"value":"$.enderecos[rua]"
 						
-					],
-					"flow_decicion":{
-						"for":"mes_aposentadoria",
-						"choose":[
-							{"case":"1", "next":"primeiro_mes_step"},
-							{"case":"2", "next":"segundo_mes_step"},
-							{"case":"3", "next":"terceiro_mes_step"},
-							{"case":"4", "next":"quarto_mes_step"}
-						]
-					}
-				}
+					},
+					{
+						"operation":"variable_assignment",
+						"scope":"LOCAL",
+						"name":"json-xpto",
+						"source":"database",
+						"value":"query-id"
+					},
+					
+					{
+						"operation":"number_multiply",
+						"right":{
+							"source_type":"var",
+							"source":"idade"
+						},
+						"left":{
+							"source_type":"var",
+							"source":"fator"
+						},
+						"assignment":{
+							"type":"global",
+							"name":"fator_aposentadoria"
+						}
+					},
+					{
+						"operation":"number_multiply",
+						"right":{
+							"source":"global",
+							"value":"fator_aposentadoria"
+						},
+						"left":{
+							"source":"literal",
+							"value":12 
+						},
+						"assignment":{
+							"type":"global",
+							"name":"mes_aposentadoria"
+						}
+					}	
+						
+				]
+			},
+			
+			{
+				"type":"FlowDecision",
+				"name":"decisao-x",
+				"source_type":"var",
+				"source":"mes_aposentadoria",
+				"choose":[
+					{"case":"$var < 0", "next":"primeiro_mes_step"},
+					{"case":"2", "next":"segundo_mes_step"},
+					{"case":"3", "next":"terceiro_mes_step"},
+					{"case":"4", "next":"quarto_mes_step"}
+				]
 			}
+			
 		]
 	}
 }

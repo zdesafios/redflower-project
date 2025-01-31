@@ -1,13 +1,42 @@
 package br.com.experian.ln;
 
-import org.springframework.boot.SpringApplication;
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.experian.ln.builtin.schema.OperationSchema;
+import br.com.experian.ln.builtin.schema.PipelineSchema;
+import br.com.experian.ln.builtin.schema.ProjectSchema;
+import br.com.experian.ln.builtin.schema.StepSchema;
+import br.com.experian.ln.builtin.schema.operation.NumberMultiplyOperationSchema;
+import br.com.experian.ln.builtin.schema.operation.VariableAssignmentOperationSchema;
+import br.com.experian.ln.builtin.schema.step.FlowDecisionStepSchema;
+import br.com.experian.ln.builtin.schema.step.MathStepSchema;
 
 @SpringBootApplication
 public class ExperianLnApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ExperianLnApplication.class, args);
+	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
+		//SpringApplication.run(ExperianLnApplication.class, args);
+		
+		aaa();
+	}
+	
+	public static void aaa() throws StreamReadException, DatabindException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.registerSubtypes(PipelineSchema.class, StepSchema.class, MathStepSchema.class,
+				OperationSchema.class, VariableAssignmentOperationSchema.class, NumberMultiplyOperationSchema.class,
+				FlowDecisionStepSchema.class);
+		
+		ClassLoader classLoader = ExperianLnApplication.class.getClassLoader();
+		File file = new File(classLoader.getResource("calculo_x.json").getFile());
+		ProjectSchema json = objectMapper.readValue(file, ProjectSchema.class);
+		System.out.println(json);
 	}
 
 }
