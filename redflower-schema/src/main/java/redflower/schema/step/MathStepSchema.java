@@ -1,12 +1,12 @@
-package br.com.experian.ln.builtin.schema.step;
+package redflower.schema.step;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.experian.ln.builtin.schema.OperationSchema;
-import br.com.experian.ln.builtin.schema.StepSchema;
 import lombok.Data;
+import redflower.schema.OperationSchema;
+import redflower.schema.StepSchema;
 
 @Data
 public class MathStepSchema extends StepSchema {

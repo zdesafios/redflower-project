@@ -1,20 +1,20 @@
-package br.com.experian.ln.builtin.schema.step;
+package redflower.schema.step;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.experian.ln.builtin.schema.StepSchema;
-import br.com.experian.ln.builtin.schema.operation.Choose;
 import lombok.Data;
+import redflower.schema.DecisionChooseSchema;
+import redflower.schema.StepSchema;
 
 @Data
 public class FlowDecisionStepSchema extends StepSchema {
 	
 	@JsonProperty("source_type")
-	String sourceType;
+	private String sourceType;
 	
 	@JsonProperty("source")
-	String source;
+	private String source;
 	
 	@JsonProperty("choose")
-	Choose[] choose;
+	private DecisionChooseSchema[] choose;
 }

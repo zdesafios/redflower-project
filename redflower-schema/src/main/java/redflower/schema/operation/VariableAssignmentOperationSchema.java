@@ -1,9 +1,9 @@
-package br.com.experian.ln.builtin.schema.operation;
+package redflower.schema.operation;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.experian.ln.builtin.schema.OperationSchema;
 import lombok.Data;
+import redflower.schema.OperationSchema;
 
 @Data
 public class VariableAssignmentOperationSchema extends OperationSchema {

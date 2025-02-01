@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProjectController {
 	
-	private final ProjectService ps;
 	
 	@PostMapping
 	public void create(@RequestParam("project") MultipartFile project) {

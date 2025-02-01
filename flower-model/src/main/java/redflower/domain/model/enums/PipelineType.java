@@ -1,4 +1,4 @@
-package br.com.experian.ln.builtin.schema;
+package redflower.domain.model.enums;
 
 public enum PipelineType {
 	ASYNC,

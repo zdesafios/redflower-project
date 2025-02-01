@@ -4,14 +4,15 @@
 		"type":"SYNC",
 		"data_json": {},
 		"entrypoint":{
-			"type":"http",
+			"type":"HTTP",
 			"path":"/project/calculox",
-			"method":"post"
+			"method":"POSt"
 		},
+		"start":"matematica",
 		"steps":[
 			{
 				"type":"MathStepSchema",
-				"name":"names",
+				"name":"matematica",
 				"next":"decisao-x",
 				"operations": [
 						
@@ -85,8 +86,9 @@
 							"source":"literal",
 							"value":12 
 						},
-						"assignment":{
-							"type":"global",
+						"result":{
+							"scope":"GLOBAL",
+							"source_type":"VAR",
 							"name":"mes_aposentadoria"
 						}
 					}	

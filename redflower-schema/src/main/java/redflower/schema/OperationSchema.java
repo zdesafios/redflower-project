@@ -1,4 +1,4 @@
-package br.com.experian.ln.builtin.schema;
+package redflower.schema;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -13,6 +13,6 @@ import lombok.Data;
 public class OperationSchema {
 	
 	@JsonProperty("operation")
-	String operation;
+	private String operation;
 	
 }

@@ -1,11 +1,11 @@
-package br.com.experian.ln.builtin.schema.operation;
+package redflower.schema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
-public class Choose {
+public class DecisionChooseSchema {
 	
 	@JsonProperty("case")
 	private String chooseCase;

@@ -1,11 +1,11 @@
-package br.com.experian.ln.builtin.schema;
+package redflower.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class ProjectSchema {
+public class ProjectModel {
 	
 	@NotBlank
 	@JsonProperty("name")
@@ -13,5 +13,5 @@ public class ProjectSchema {
 	
 	@NotNull
 	@JsonProperty("pipeline")
-	private PipelineSchema pipelineSchema;
+	private PipelineModel pipelineSchema;
 }

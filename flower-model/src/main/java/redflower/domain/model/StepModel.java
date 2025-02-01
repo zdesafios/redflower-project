@@ -1,4 +1,4 @@
-package br.com.experian.ln.builtin.schema;
+package redflower.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @JsonTypeInfo( use = JsonTypeInfo.Id.DEDUCTION )
-public abstract class StepSchema {
+public abstract class StepModel {
 	
 	@NotNull
 	@JsonProperty("type")

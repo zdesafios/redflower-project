@@ -9,14 +9,14 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.experian.ln.builtin.schema.OperationSchema;
-import br.com.experian.ln.builtin.schema.PipelineSchema;
-import br.com.experian.ln.builtin.schema.ProjectSchema;
-import br.com.experian.ln.builtin.schema.StepSchema;
-import br.com.experian.ln.builtin.schema.operation.NumberMultiplyOperationSchema;
-import br.com.experian.ln.builtin.schema.operation.VariableAssignmentOperationSchema;
-import br.com.experian.ln.builtin.schema.step.FlowDecisionStepSchema;
-import br.com.experian.ln.builtin.schema.step.MathStepSchema;
+import redflower.schema.OperationSchema;
+import redflower.schema.PipelineSchema;
+import redflower.schema.ProjectSchema;
+import redflower.schema.StepSchema;
+import redflower.schema.operation.NumberMultiplyOperationSchema;
+import redflower.schema.operation.VariableAssignmentOperationSchema;
+import redflower.schema.step.FlowDecisionStepSchema;
+import redflower.schema.step.MathStepSchema;
 
 @SpringBootApplication
 public class ExperianLnApplication {
