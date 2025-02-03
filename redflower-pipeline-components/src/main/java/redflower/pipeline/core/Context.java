@@ -7,5 +7,7 @@ public interface Context {
 	Object getVar(String name);
 	void setJsonData(String jsonData);
 	Object getVarFromJsonData(String expression);
+	Object getVarFromHttpIn(String expression);
 	void publish(ApplicationEvent event);
+	void setHttpIn(String httpIn);
 }

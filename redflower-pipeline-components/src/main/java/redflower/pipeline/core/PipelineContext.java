@@ -18,6 +18,7 @@ public class PipelineContext implements Context {
 	private Map<String, Object> vars = new HashMap<>();
 	
 	private String jsonData;
+	private String httpIn;
 	
 	// Encontrar um melhor local para esse componente, semanticamente nao faz muito sentido
 	@Deprecated
@@ -59,8 +60,19 @@ public class PipelineContext implements Context {
 	@Deprecated
 	@Override
 	public void setJsonData(String jsonData) {
-		if(null != jsonData)
+		if(null != this.jsonData)
 			this.jsonData = jsonData;
+	}
+
+	@Override
+	public void setHttpIn(String httpIn) {
+		if(null != this.httpIn)
+			this.httpIn = httpIn;
+	}
+
+	@Override
+	public Object getVarFromHttpIn(String expression) {
+		return JsonPath.read(httpIn, expression);
 	}
 
 }

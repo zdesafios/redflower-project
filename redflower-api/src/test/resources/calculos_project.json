@@ -1,0 +1,79 @@
+{
+	"name": "calculos_varios_steps_1",
+	"pipeline": {
+		"type":"SYNC",
+		"data_json": "{\"valor1\": 2, \"valor2\": 3,\"valor3\": 6.5,\"valor4\": \"5.0\"}",
+		"start":"calculo1",
+		"steps":[
+			{
+				"type":"genericStep",
+				"name":"calculo1",
+				"next":"criarvar",
+				"operations":[
+					{
+						"operation":"numberMultiply",
+						"right": {
+							"scope":"GLOBAL",
+							"source_type":"JSON_DATA",
+							"expression":"$.valor1"
+						},
+						"left": {
+							"scope":"GLOBAL",
+							"source_type":"JSON_DATA",
+							"expression":"$.valor2"
+						},
+						"result":{
+							"scope":"GLOBAL",
+							"name":"valor1xvalor2"
+						}
+					},
+					{
+						"operation":"numberSum",
+						"right": {
+							"scope":"GLOBAL",
+							"source_type":"JSON_DATA",
+							"expression":"$.valor1"
+						},
+						"left": {
+							"scope":"GLOBAL",
+							"source_type":"JSON_DATA",
+							"expression":"$.valor2"
+						},
+						"result":{
+							"scope":"GLOBAL",
+							"name":"valor1+valor2"
+						}
+					}
+				]
+			},
+			{
+				"type":"genericStep",
+				"name":"criarvar",
+				"next":"mostrarvar",
+				"operations":[
+				
+					{
+						"operation":"variableAssignment",
+						"scope":"GLOBAL",
+						"name":"valor1_global",
+						"source_type":"JSON_DATA",
+						"expression":"$.valor1"
+					},
+					{
+						"operation":"variableAssignment",
+						"scope":"GLOBAL",
+						"name":"valor2_global",
+						"source_type":"JSON_DATA",
+						"expression":"$.valor2"
+					}
+				]
+			},
+			{
+				"type":"pipelineResultStep",
+				"name":"mostrarvar",
+				"next":".end",
+				"vars":["valor1_global", "valor2_global", "valor1xvalor2", "valor1+valor2"]
+			}
+		]
+	}
+}

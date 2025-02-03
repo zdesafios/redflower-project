@@ -2,6 +2,7 @@ package redflower.api.web.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,10 +26,11 @@ public class ProjectStarterController {
 	private final Context context;
 	
 	@PostMapping(path = "/{id}")
-	public Object postStart(@PathVariable("id") String id) {
+	public Object postStart(@PathVariable("id") String id, @RequestBody String httpIn) {
 		ProjectSchema projectSchema = projectService.getById(id);
 		PipelineSchema pipelineSchema = projectSchema.getPipelineSchema();
 		context.setJsonData(pipelineSchema.getData());
+		context.setHttpIn(httpIn);
 		context.publish(new ProjectStartedEvent(projectSchema));
 		return pipelineExecutor.execute(pipelineSchema, context);
 	}
