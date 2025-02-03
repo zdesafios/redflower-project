@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import redflower.pipeline.core.Context;
 import redflower.pipeline.core.operation.DefaultOperation;
 import redflower.pipeline.core.step.Step;
-import redflower.schema.core.GetVarSchema;
 import redflower.schema.core.operation.OperationSchema;
 import redflower.schema.operation.VariableAssignmentOperationSchema;
 

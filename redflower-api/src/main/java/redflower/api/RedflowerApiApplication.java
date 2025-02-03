@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ComponentScan("redflower")
-@EntityScan("redflower.schema")
-@EnableMongoRepositories(basePackages = {"redflower.domain.repository"})
+@EntityScan("redflower.schema.core")
+@EnableMongoRepositories(basePackages = {"redflower.api.repository"})
 public class RedflowerApiApplication {
 
 	public static void main(String[] args) {

@@ -1,7 +1,10 @@
 package redflower.api.web.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +22,7 @@ public class ProjectController {
 	private final ProjectService projectService;
 	
 	@PostMapping
-	public void createByFile(@RequestParam("file") MultipartFile file) throws IOException {
-		projectService.createProjectWithJsonFile(file.getBytes());
+	public ResponseEntity<Map<String, String>> createByFile(@RequestParam("file") MultipartFile file) throws IOException {
+		return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProjectWithJsonFile(file.getBytes()));
 	}
 }

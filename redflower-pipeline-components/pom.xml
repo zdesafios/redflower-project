@@ -7,7 +7,6 @@
 		<artifactId>redflower-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>redflower-pipeline-components</groupId>
 	<artifactId>redflower-pipeline-components</artifactId>
 	<dependencies>
 		<dependency>
