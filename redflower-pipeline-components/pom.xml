@@ -7,11 +7,17 @@
 		<artifactId>redflower-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>redflower-schema</artifactId>
+	<groupId>redflower-pipeline-components</groupId>
+	<artifactId>redflower-pipeline-components</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>redflower</groupId>
+			<artifactId>redflower-schema</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
 		</dependency>
 	</dependencies>
 </project>

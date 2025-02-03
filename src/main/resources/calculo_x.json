@@ -6,7 +6,7 @@
 		"entrypoint":{
 			"type":"HTTP",
 			"path":"/project/calculox",
-			"method":"POSt"
+			"method":"POST"
 		},
 		"start":"matematica",
 		"steps":[
@@ -64,27 +64,27 @@
 					{
 						"operation":"number_multiply",
 						"right":{
-							"source_type":"var",
-							"source":"idade"
+							"source_type":"VAR",
+							"name":"idade"
 						},
 						"left":{
-							"source_type":"var",
-							"source":"fator"
+							"source_type":"VAR",
+							"name":"fator"
 						},
-						"assignment":{
-							"type":"global",
+						"result":{
+							"type":"GLOBAL",
 							"name":"fator_aposentadoria"
 						}
 					},
 					{
 						"operation":"number_multiply",
 						"right":{
-							"source":"global",
-							"value":"fator_aposentadoria"
+							"source_type":"VAR",
+							"name":"fator_aposentadoria"
 						},
 						"left":{
-							"source":"literal",
-							"value":12 
+							"source_type":"VAR",
+							"name":"sad" 
 						},
 						"result":{
 							"scope":"GLOBAL",

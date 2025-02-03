@@ -4,25 +4,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import redflower.schema.OperationSchema;
+import redflower.schema.enums.SourceType;
+import redflower.schema.enums.VarScope;
 
 @Data
 public class VariableAssignmentOperationSchema extends OperationSchema {
 
 	@JsonProperty("final")
-	Boolean makeFinal = Boolean.FALSE;
+	private Boolean makeFinal = Boolean.FALSE;
 	
 	@JsonProperty("scope")
-	String scope;
+	private VarScope scope;
 	
 	@JsonProperty("name")
-	String name;
+	private String name;
 	
 	@JsonProperty("source_type")
-	String sourceType;
+	private SourceType sourceType;
 	
 	@JsonProperty("source")
-	String source;
+	private String source;
 	
 	@JsonProperty("value")
-	String value;
+	private String value;
+	
+	@JsonProperty("expression")
+	private String expression;
 }

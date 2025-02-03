@@ -4,6 +4,7 @@ package redflower.schema;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -18,5 +19,14 @@ public abstract class StepSchema {
 	@NotNull
 	@JsonProperty("name")
 	String name;
+	
+	@NotNull
+	@NotBlank
+	@JsonProperty("next")
+	private String next;
+
+	public boolean hasNext() {
+		return !next.equalsIgnoreCase(".end");
+	}
 
 }

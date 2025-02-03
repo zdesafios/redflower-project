@@ -14,5 +14,9 @@ public class OperationSchema {
 	
 	@JsonProperty("operation")
 	private String operation;
+
+	public <T extends OperationSchema>  T impl() {
+		return (T) this;
+	} 
 	
 }

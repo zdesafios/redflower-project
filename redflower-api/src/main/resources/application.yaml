@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      database: redflower-db
+      host: server02
+      port: 27017
+      username: mongo
+      password: mongo
+      authentication-database: admin

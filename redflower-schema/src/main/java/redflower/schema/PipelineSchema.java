@@ -19,7 +19,7 @@ public class PipelineSchema {
 	private PipelineType type;
 	
 	@JsonProperty("data_json")
-	private Object data;
+	private String data;
 	
 	@Valid
 	@NotNull
@@ -35,5 +35,16 @@ public class PipelineSchema {
 	@NotEmpty(message = "")
 	@JsonProperty("steps")
 	private List<@Valid StepSchema> steps;
+
+	public StepSchema getSchemaForStart() {
+		return getSchemaForName(start);
+	}
+	
+	public StepSchema getSchemaForName(String name) {
+		return steps.stream()
+				.filter(s-> s.getName().equals(name))
+				.findFirst()
+				.orElseThrow(()-> new RuntimeException("step %s not defined".formatted(start)));
+	}
 	
 }
