@@ -116,7 +116,7 @@ public class PipelineResultStep extends DefaultStep<PipelineResultSchema> {
 
 }
 ```
-Exemplo do schema
+Exemplo do schema, essa operação equivale conceitualmente ao 'http_out'
 ```json
 {
     "type":"pipelineResultStep",
@@ -281,7 +281,7 @@ docker run -d --network some-network --name some-mongo \
 ```
 
 ### API
-Depois de baixado o projeto, devemos entrar no diretório rais.
+Depois de baixado o projeto, devemos entrar no diretório raiz.
 
 ```shell
 cd redflower-project
