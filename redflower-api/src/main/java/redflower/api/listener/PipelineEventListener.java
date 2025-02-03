@@ -4,9 +4,9 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import redflower.pipeline.core.PipelineFinishEvent;
-import redflower.pipeline.core.PipelineStartedEvent;
-import redflower.pipeline.core.StepStartedEvent;
+import redflower.pipeline.core.events.PipelineFinishEvent;
+import redflower.pipeline.core.events.PipelineStartedEvent;
+import redflower.pipeline.core.events.StepStartedEvent;
 
 @Slf4j
 @Component

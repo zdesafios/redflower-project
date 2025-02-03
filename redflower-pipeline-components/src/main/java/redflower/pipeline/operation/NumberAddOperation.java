@@ -12,15 +12,15 @@ import redflower.schema.core.PutVarResultSchema;
 import redflower.schema.core.operation.OperationSchema;
 import redflower.schema.operation.NumberCalculatorOperationSchema;
 
-@Component("numberMultiply")
+@Component("numberSum")
 @RequiredArgsConstructor
-public final class NumberMultiplyOperation extends DefaultOperation {
+public final class NumberAddOperation extends DefaultOperation {
 	
 	private final NumberCalculateOperationDalegate calculateDelegate;
 
 	@Override
 	public void onRun(Step stepCurrent, OperationSchema operationSchema, Context context) {
-		Number result = calculateDelegate.onRun(stepCurrent, operationSchema, context, new MultiplyCalculatorStrategy());
+		Number result = calculateDelegate.onRun(stepCurrent, operationSchema, context, new SumCalculatorStrategy());
 		
 		NumberCalculatorOperationSchema schema = operationSchema.impl();
 		PutVarResultSchema resultSchema = schema.getResult();
@@ -36,7 +36,7 @@ public final class NumberMultiplyOperation extends DefaultOperation {
 	}
 }
 
- class MultiplyCalculatorStrategy implements CalulatorStrategy {
+ class SumCalculatorStrategy implements CalulatorStrategy {
 
 	@Override
 	public Number calculate(Number right, Number left) {
@@ -44,7 +44,7 @@ public final class NumberMultiplyOperation extends DefaultOperation {
 			return null;
 		}
 		
-		return right.doubleValue() * left.doubleValue();
+		return right.doubleValue() + left.doubleValue();
 	}
 	 
  }

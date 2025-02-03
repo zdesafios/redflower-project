@@ -3,8 +3,7 @@ package redflower.schema.step;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
-import redflower.schema.DecisionChooseSchema;
-import redflower.schema.StepSchema;
+import redflower.schema.core.step.StepSchema;
 
 @Data
 public class FlowDecisionStepSchema extends StepSchema {

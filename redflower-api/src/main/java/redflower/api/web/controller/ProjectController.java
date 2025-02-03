@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
-import redflower.domain.service.ProjectService;
+import redflower.api.service.ProjectService;
 
 @RestController
 @RequestMapping(path = "/project")

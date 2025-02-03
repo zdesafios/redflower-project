@@ -86,7 +86,6 @@
 	</build>
 
 	<modules>
-		<module>redflower-domain</module>
 		<module>redflower-api</module>
 		<module>redflower-schema</module>
 		<module>redflower-pipeline-components</module>

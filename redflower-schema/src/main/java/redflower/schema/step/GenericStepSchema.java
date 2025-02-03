@@ -5,8 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
-import redflower.schema.OperationSchema;
-import redflower.schema.StepSchema;
+import redflower.schema.core.operation.OperationSchema;
+import redflower.schema.core.step.StepSchema;
 
 @Data
 public class GenericStepSchema extends StepSchema {

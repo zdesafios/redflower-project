@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import redflower.api.listener.ProjectStartedEvent;
-import redflower.domain.service.ProjectService;
+import redflower.api.service.ProjectService;
 import redflower.pipeline.core.Context;
 import redflower.pipeline.core.PipelineExecutor;
-import redflower.schema.PipelineSchema;
-import redflower.schema.ProjectSchema;
+import redflower.schema.core.PipelineSchema;
+import redflower.schema.core.ProjectSchema;
 
 @RestController
 @RequestMapping("/start/project")

@@ -3,10 +3,10 @@ package redflower.pipeline.operation;
 import org.springframework.stereotype.Component;
 
 import redflower.pipeline.core.Context;
-import redflower.pipeline.core.DefaultOperation;
-import redflower.pipeline.core.Step;
-import redflower.schema.GetVarSchema;
-import redflower.schema.OperationSchema;
+import redflower.pipeline.core.operation.DefaultOperation;
+import redflower.pipeline.core.step.Step;
+import redflower.schema.core.GetVarSchema;
+import redflower.schema.core.operation.OperationSchema;
 import redflower.schema.operation.VariableAssignmentOperationSchema;
 
 @Component("variableAssignment")
@@ -24,23 +24,34 @@ public class VariableAssignmentOperation extends DefaultOperation {
 		}
 	}
 	
+	// TODO Criar um componente pra acessar as variaveis locais, globais e json_data
 	private Object getValue(Step current, VariableAssignmentOperationSchema schema, Context context) {
 		Object value = null;
 		if(schema.getSourceType().isJsonData()) {
-			value = getFromJsonData(current, schema, context);
+			value = getFromJsonData(schema, context);
 		} else if(schema.getSourceType().isLiteral()) {
 			value = schema.getValue();
-			
+		} else if(schema.getSourceType().isVar()) {
+			value = getFromVar(current, schema, context, schema.getName()); 
 		}
 		
 		return value;
 	}
 	
-	private Object getFromJsonData(Step current, VariableAssignmentOperationSchema schema, Context context) {
+	private Object getFromJsonData(VariableAssignmentOperationSchema schema, Context context) {
 		if(!schema.getScope().isGlobal()) {
 			throw new RuntimeException("JSON DATA exists only in GLOBAL scope");
 		}
-		Object value = context.getVarFromJsonData(schema.getExpression());
+		return context.getVarFromJsonData(schema.getExpression());
+	}
+	
+	private Object getFromVar(Step current, VariableAssignmentOperationSchema schema, Context context, String name) {
+		Object value = null;
+		if(schema.getScope().isGlobal()) {
+			value = context.getVar(name);
+		} else {
+			value = current.getVar(name);
+		}
 		
 		return value;
 	}

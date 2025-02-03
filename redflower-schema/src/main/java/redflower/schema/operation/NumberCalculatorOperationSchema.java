@@ -3,9 +3,9 @@ package redflower.schema.operation;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
-import redflower.schema.PutVarResultSchema;
-import redflower.schema.OperationSchema;
-import redflower.schema.GetVarSchema;
+import redflower.schema.core.GetVarSchema;
+import redflower.schema.core.PutVarResultSchema;
+import redflower.schema.core.operation.OperationSchema;
 
 @Data
 public class NumberCalculatorOperationSchema extends OperationSchema {

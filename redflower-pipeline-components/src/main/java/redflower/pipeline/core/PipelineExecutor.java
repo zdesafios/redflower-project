@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import redflower.schema.PipelineSchema;
-import redflower.schema.StepSchema;
+import redflower.pipeline.core.events.PipelineFinishEvent;
+import redflower.pipeline.core.events.PipelineStartedEvent;
+import redflower.pipeline.core.step.Step;
+import redflower.schema.core.PipelineSchema;
+import redflower.schema.core.step.StepSchema;
 
 @Slf4j
 @Service
@@ -20,8 +23,8 @@ public class PipelineExecutor {
 		
 		StepLocator stepLocator = new StepLocator(beanFactory, pipelineSchema);
 		
-		Step firstStep = stepLocator.getStep(pipelineSchema.getStart());
-		StepSchema firstStepSchema = stepLocator.getStepSchema(pipelineSchema.getStart());
+		StepSchema firstStepSchema = stepLocator.getStartStepSchema();
+		Step firstStep = stepLocator.getStartStep();
 		
 		firstStep.start(stepLocator, context, firstStepSchema);
 		

@@ -9,14 +9,15 @@
 	</parent>
 	<artifactId>redflower-api</artifactId>
 	<dependencies>
+		
 		<dependency>
 			<groupId>redflower</groupId>
-			<artifactId>redflower-domain</artifactId>
+			<artifactId>redflower-schema</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>redflower</groupId>
-			<artifactId>redflower-schema</artifactId>
+			<artifactId>redflower-pipeline-components</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

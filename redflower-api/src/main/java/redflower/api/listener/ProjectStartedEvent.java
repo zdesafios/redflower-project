@@ -2,7 +2,7 @@ package redflower.api.listener;
 
 import org.springframework.context.ApplicationEvent;
 
-import redflower.schema.ProjectSchema;
+import redflower.schema.core.ProjectSchema;
 
 public class ProjectStartedEvent extends ApplicationEvent {
 

@@ -7,10 +7,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
 import redflower.pipeline.core.Context;
-import redflower.pipeline.core.DefaultStep;
-import redflower.pipeline.core.Observer;
-import redflower.pipeline.core.Operation;
-import redflower.schema.OperationSchema;
+import redflower.pipeline.core.operation.Operation;
+import redflower.pipeline.core.step.DefaultStep;
+import redflower.schema.core.operation.OperationSchema;
 import redflower.schema.step.GenericStepSchema;
 
 @Component("genericStep")
