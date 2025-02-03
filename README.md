@@ -67,6 +67,7 @@ public class GenericStep extends DefaultStep<GenericStepSchema> {
 ```
 
 Abaixo temos a sua definição em json
+
 ```json
 {
     "type":"genericStep",
@@ -117,6 +118,7 @@ public class PipelineResultStep extends DefaultStep<PipelineResultSchema> {
 }
 ```
 Exemplo do schema, essa operação equivale conceitualmente ao 'http_out'
+
 ```json
 {
     "type":"pipelineResultStep",
@@ -182,6 +184,7 @@ public class VariableAssignmentOperation extends DefaultOperation {
 ```
 
 Exemplo do schema
+
 ```json
 {
     "operation":"variableAssignment",
@@ -232,6 +235,7 @@ public final class NumberAddOperation extends DefaultOperation {
 ```
 
 Estrategia para realizar o calculo
+
 ```java
  class SumCalculatorStrategy implements CalulatorStrategy {
 
@@ -248,6 +252,7 @@ Estrategia para realizar o calculo
 ```
 
 Exemplo do schema, esse equema define 2 numero(esquerda e direita) para serem calculados, bem como também define o scope e nome da váriavel resultado
+
 ```json
 "operation":"numberMultiply",
 "right": {
@@ -273,6 +278,7 @@ Exemplo do schema, esse equema define 2 numero(esquerda e direita) para serem ca
 Devemos iniciar uma instancia do mongodb, que será responsavel por guardar o json de definição(schema)
 
 #### Via docker
+
 ```docker
 docker run -d --network some-network --name some-mongo \
 	-e MONGO_INITDB_ROOT_USERNAME=mongo \
@@ -287,6 +293,7 @@ Depois de baixado o projeto, devemos entrar no diretório raiz.
 cd redflower-project
 ```
 #### Via mvn
+
 ```shell
 mvn spring-boot:run
 ```
@@ -298,6 +305,7 @@ Será iniciado o servidor que ouvirá na porta 8080
 
 redflower.postman_collection.json
 Coleção do postman
+
 ```json
 {
 	"info": {
@@ -352,12 +360,14 @@ Coleção do postman
 ```
 
 #### Endpoint pra criar a pipeline
+
 ```curl
 http://localhost:8080/project
 ```
 Deve ser passado o arquivo json com a definição
 
 #### Endpoint pra 'startar' a pipeline
+
 ```curl
 http://localhost:8080/start/project/{id}
 ```
@@ -365,6 +375,7 @@ O Id conseguimos na exeução de criação
 
 
 ### Arquivo de definição
+
 ```json
 {
 	"name": "calculos_varios_steps_1",
